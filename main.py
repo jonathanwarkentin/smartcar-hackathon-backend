@@ -9,6 +9,10 @@ app = Flask(__name__)
 def index():
     if (request.method == 'POST'):
         some_json = request.get_json()
-        return jsonify({'you sent': some_json}), 201
+        response = jsonify({'you sent': some_json})
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response, 201
     else:
+        response = jsonify({"about":"Hello World!"})
+        response.headers.add('Access-Control-Allow-Origin', '*')
         return jsonify({"about":"Hello World!"})
