@@ -1,10 +1,11 @@
 import smartcar
 from flask import Flask, redirect, request, jsonify
-from flask_cors import CORS
+from flask.ext.cors import CORS, cross_origin
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'the quick brown fox jumps over the lazy   dog'
 app.config['CORS_HEADERS'] = 'Content-Type'
+
+cors = CORS(app, resources={r"/": {"origins": "https://shrouded-ravine-72981.herokuapp.com/"}})
 
 @app.route('/', methods=['GET', 'POST'])
 @cross_origin(origin='https://shrouded-ravine-72981.herokuapp.com/',headers=['Content- Type','Authorization'])
