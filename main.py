@@ -1,8 +1,10 @@
-from flask import Flask
+import smartcar
+from flask import Flask, redirect, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
-    return '<h1>Deployed to Heroku!!! This is the second change!</h1>'
+    return '<h1>Smartcar App Dependencies Installed</h1>'
