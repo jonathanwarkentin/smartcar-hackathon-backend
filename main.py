@@ -1,12 +1,11 @@
 import smartcar
 from flask import Flask, redirect, request, jsonify
-from flask.ext.cors import CORS, cross_origin
+from flask_cors import CORS
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app)
 
 @app.route('/', methods=['GET', 'POST'])
-@cross_origin(origin='*',headers=['Content- Type','Authorization'])
 def index():
     if (request.method == 'POST'):
         some_json = request.get_json()
