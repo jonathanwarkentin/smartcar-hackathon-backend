@@ -3,12 +3,10 @@ from flask import Flask, redirect, request, jsonify
 from flask.ext.cors import CORS, cross_origin
 
 app = Flask(__name__)
-app.config['CORS_HEADERS'] = 'Content-Type'
-
-cors = CORS(app, resources={r"/": {"origins": "https://shrouded-ravine-72981.herokuapp.com/"}})
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route('/', methods=['GET', 'POST'])
-@cross_origin(origin='https://shrouded-ravine-72981.herokuapp.com/',headers=['Content- Type','Authorization'])
+@cross_origin(origin='*',headers=['Content- Type','Authorization'])
 def index():
     if (request.method == 'POST'):
         some_json = request.get_json()
