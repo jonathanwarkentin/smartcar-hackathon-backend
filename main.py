@@ -5,12 +5,12 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/', methods=['GET', 'POST'])
+
+@app.route("/", methods=["GET", "POST"])
 def index():
-    if (request.method == 'POST'):
-        request.headers['Content-Type'] == 'application/json':
-        return jsonify({'you sent': json.dumps(request.json)})
-        
+    if request.method == "POST":
+        return jsonify({"you sent": json.dumps(request.json)})
+
     else:
-        response = jsonify({"about":"Hello World!"})
+        response = jsonify({"about": "Hello World!"})
         return response
